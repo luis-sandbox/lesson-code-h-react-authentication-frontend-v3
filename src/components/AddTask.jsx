@@ -1,8 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
-
 
 function AddTask(props) {
   const [title, setTitle] = useState("");
@@ -23,7 +21,7 @@ function AddTask(props) {
     // Send the token through the request "Authorization" Headers   
     axios
       .post(
-        `${API_URL}/api/tasks`,
+        `${import.meta.env.VITE_API_URL}/api/tasks`,
         requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } }        
       )

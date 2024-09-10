@@ -5,8 +5,6 @@ import AddTask from "../components/AddTask";
 
 import TaskCard from "../components/TaskCard";
 
-const API_URL = "http://localhost:5005";
-
 
 function ProjectDetailsPage (props) {
   const [project, setProject] = useState(null);
@@ -20,7 +18,7 @@ function ProjectDetailsPage (props) {
     // Send the token through the request "Authorization" Headers
     axios
       .get(
-        `${API_URL}/api/projects/${projectId}`,
+        `${import.meta.env.VITE_API_URL}/api/projects/${projectId}`,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {

@@ -3,8 +3,6 @@ import axios from "axios";
 import AddProject from "../components/AddProject";
 import ProjectCard from "../components/ProjectCard";
 
-const API_URL = "http://localhost:5005";
-
 function ProjectListPage() {
   const [projects, setProjects] = useState([]);
 
@@ -14,7 +12,7 @@ function ProjectListPage() {
 
     // Send the token through the request "Authorization" Headers
     axios
-      .get(`${API_URL}/api/projects`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/projects`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setProjects(response.data))

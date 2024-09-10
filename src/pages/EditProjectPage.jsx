@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
 
-const API_URL = "http://localhost:5005";
-
 function EditProjectPage(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -19,7 +17,7 @@ function EditProjectPage(props) {
     // Send the token through the request "Authorization" Headers 
     axios
       .get(
-        `${API_URL}/api/projects/${projectId}`,
+        `${import.meta.env.VITE_API_URL}/api/projects/${projectId}`,
         { headers: { Authorization: `Bearer ${storedToken}` } }    
       )
       .then((response) => {
@@ -42,7 +40,7 @@ function EditProjectPage(props) {
     // Send the token through the request "Authorization" Headers   
     axios
       .put(
-        `${API_URL}/api/projects/${projectId}`,
+        `${import.meta.env.VITE_API_URL}/api/projects/${projectId}`,
         requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } }              
       )
@@ -59,7 +57,7 @@ function EditProjectPage(props) {
     // Send the token through the request "Authorization" Headers   
     axios
       .delete(
-        `${API_URL}/api/projects/${projectId}`,
+        `${import.meta.env.VITE_API_URL}/api/projects/${projectId}`,
         { headers: { Authorization: `Bearer ${storedToken}` } }           
       )
       .then(() => navigate("/projects"))

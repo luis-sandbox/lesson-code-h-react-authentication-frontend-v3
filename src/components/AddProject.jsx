@@ -1,8 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
-
 function AddProject(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -18,7 +16,7 @@ function AddProject(props) {
     // Send the token through the request "Authorization" Headers
     axios
       .post(
-        `${API_URL}/api/projects`,
+        `${import.meta.env.VITE_API_URL}/api/projects`,
         requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
